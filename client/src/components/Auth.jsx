@@ -33,10 +33,9 @@ const handleSubmit = async (e) => {
 
            //now taking data out of the form and making url request using axios. And then extracts important pieces of data from the server's response.
            const { fullName, username, password, avatarURL, phoneNumber } = form;
+          /* const URL = "http://localhost:5000/auth";*/
            const URL = "https://medical-pager-chat-app.onrender.com/auth";
-
-
-            const startTime = Date.now(); //for GA Added timing measurement for the authentication process.
+           const startTime = Date.now(); //for GA Added timing measurement for the authentication process.
     try {
   
     

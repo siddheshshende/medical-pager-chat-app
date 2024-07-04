@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - run: npm install
+    - run: npm test
+
+    - name: Run server
+      env:
+        PORT: ${{ secrets.PORT }}
+        TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+        TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+        TWILIO_MESSAGING_SERVICE_SID: ${{ secrets.TWILIO_MESSAGING_SERVICE_SID }}
+        STREAM_APP_ID: ${{ secrets.STREAM_APP_ID }}
+        STREAM_API_SECRET: ${{ secrets.STREAM_API_SECRET }}
+        STREAM_API_KEY: ${{ secrets.STREAM_API_KEY }}
+      run: |
+        node server.js
