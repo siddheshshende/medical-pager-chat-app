@@ -36,7 +36,7 @@ const handleSubmit = async (e) => {
            
     try {
   
-        setIsLoading(true);
+    
         const { data: { token, userId, hashedPassword} } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, 
             fullName, 
