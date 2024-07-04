@@ -1,14 +1,15 @@
 
 const express = require('express');
 const cors = require('cors');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
 //we will be using many env. variables. So, mentioned below line.
 require('dotenv').config(); // this is going to allow us to call environment variables right inside our node application.
 
 // Import routes for signin and signup
 const authRoutes = require('./routes/auth.js');
 
-const app = express();
-const PORT = process.env.PORT || 5000;
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;

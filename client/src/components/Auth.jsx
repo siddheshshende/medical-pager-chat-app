@@ -30,11 +30,13 @@ const Auth = () => {
 const handleSubmit = async (e) => {
     e.preventDefault();
 
+           //now taking data out of the form and making url request using axios. And then extracts important pieces of data from the server's response.
+           const { fullName, username, password, avatarURL, phoneNumber } = form;
+           const URL = "http://localhost:5000/auth";
+           
     try {
-         //now taking data out of the form and making url request using axios. And then extracts important pieces of data from the server's response.
-         const { fullName, username, password, avatarURL, phoneNumber } = form;
-        const URL = "http://localhost:5000/auth";
-
+  
+        setIsLoading(true);
         const { data: { token, userId, hashedPassword} } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, 
             fullName, 
