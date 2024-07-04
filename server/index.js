@@ -46,7 +46,7 @@ app.post('/', (req, res) => {
             });
         return res.status(200).send("Message sent successfully!");
     }
-return res.status(200).send("Not a new message");
+return res.status(200).send("Not a new message");//if error i think
 });
 
 app.use('/auth', authRoutes);
