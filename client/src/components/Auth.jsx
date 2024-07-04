@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import chatimg2 from '../assets/chatimg2.png';
 import HospitalIcon from '../assets/hospital.png'
+import ReactGA from 'react-ga4';
 
 const cookies = new Cookies(); 
 
@@ -33,7 +34,9 @@ const handleSubmit = async (e) => {
            //now taking data out of the form and making url request using axios. And then extracts important pieces of data from the server's response.
            const { fullName, username, password, avatarURL, phoneNumber } = form;
            const URL = "https://medical-pager-chat-app.onrender.com/auth";
-           
+
+
+            const startTime = Date.now(); //for GA Added timing measurement for the authentication process.
     try {
   
     
@@ -56,6 +59,19 @@ const handleSubmit = async (e) => {
             cookies.set('avatarURL', avatarURL);
             cookies.set('hashedPassword', hashedPassword);
         }
+        const endTime = Date.now();
+        ReactGA.event({ //Added event tracking for successful sign-up/sign-in.
+            category: 'User',
+            action: isSignup ? 'Sign Up' : 'Sign In',
+            label: 'Success'
+        });
+
+        ReactGA.timing({ // How long the authentication process takes
+            category: 'Authentication',
+            variable: isSignup ? 'Sign Up Time' : 'Sign In Time',
+            value: endTime - startTime
+        });
+
  //then after setting cookies we will reload our browser.
         window.location.reload();
     } catch (error) {
@@ -71,6 +87,12 @@ const handleSubmit = async (e) => {
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);// changing the state depending on previous state.
+
+        ReactGA.event({
+            category: 'User',
+            action: 'Switch Auth Mode',
+            label: isSignup ? 'To Sign In' : 'To Sign Up'
+        });
     };
 
     return (

@@ -1184,7 +1184,7 @@ ul.str-chat__simple-reactions-list:hover {
 .str-chat__message-team-content ul {
   margin-top: 4px;
 }
-
+/*--------------------------------------emoji ------------------------------------------------*/
 .emoji-mart-emoji-custom span {
   height: 15px !important;
   width: 15px !important;
@@ -1192,9 +1192,76 @@ ul.str-chat__simple-reactions-list:hover {
 
 .str-chat__input-flat-emojiselect svg,
 .str-chat__input-flat-fileupload svg {
-
   fill: #2c2c30 !important;
 }
+.emoji-mart-anchor-selected {
+  color: var(--primary-color) !important;
+}
+
+.emoji-mart-anchor-bar {
+  background: var(--primary-color) !important;
+}
+
+.team-message-input__wrapper .str-chat__input--emojipicker {
+  z-index: 3;
+  position: absolute;
+  bottom: 112px;
+  left: 20px;
+  width: 338px;
+}
+
+.str-chat__input--emojipicker {
+  bottom: 100%;
+  position: absolute;
+  right: 0
+}
+.str-chat__edit-message-form .rfu-file-upload-button,
+.str-chat__edit-message-form .str-chat__input-emojiselect,
+.str-chat__edit-message-form .str-chat__input-fileupload {
+    display: flex;
+    left: auto;
+    position: static;
+    right: auto;
+    top: auto
+}
+.str-chat__edit-message-form .rfu-file-upload-button svg,
+.str-chat__edit-message-form .str-chat__input-emojiselect svg,
+.str-chat__edit-message-form .str-chat__input-fileupload svg {
+    fill: #000;
+    fill: var(--black);
+    opacity: .5
+}
+.str-chat__edit-message-form .rfu-file-upload-button:hover svg,
+.str-chat__edit-message-form .str-chat__input-emojiselect:hover svg,
+.str-chat__edit-message-form .str-chat__input-fileupload:hover svg {
+    opacity: 1
+}
+.str-chat.dark .str-chat__edit-message-form .rfu-file-upload-button svg,
+.str-chat.dark .str-chat__edit-message-form .str-chat__input-emojiselect svg {
+    fill: #dbdbdb;
+    fill: var(--grey-gainsboro)
+}
+/* Style for emoji search autocomplete container */
+div.rta__autocomplete.str-chat__emojisearch {
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  background: #fff;
+  margin: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.thread-message-input__wrapper .str-chat__input--emojipicker {
+  z-index: 3;
+  top: 183px;
+  right: 299px;
+  width: 338px;
+}
+/* Style to remove outline when emoji is focused again*/
+.emoji-mart .emoji-mart-emoji:focus {
+  outline: none;
+}
+/*------------------------emoji end -----------------------------------------------*/
 .str-chat__simple-reactions-list-item--last-number {
   font-family: Helvetica Neue, sans-serif;
   font-style: normal;
@@ -1238,13 +1305,7 @@ ul.str-chat__simple-reactions-list:hover {
   color: var(--primary-color);
 }
 
-.emoji-mart-anchor-selected {
-  color: var(--primary-color) !important;
-}
 
-.emoji-mart-anchor-bar {
-  background: var(--primary-color) !important;
-}
 
 .str-chat__message-team--editing {
   background: #e9e9ea;
@@ -1472,18 +1533,6 @@ ul.str-chat__simple-reactions-list:hover {
   background: rgba(204, 204, 204, 0.5);
 }
 
-.team-message-input__wrapper .str-chat__input--emojipicker {
-  z-index: 3;
-  position: absolute;
-  bottom: 112px;
-  left: 20px;
-  width: 338px;
-}
-
-.emoji-mart .emoji-mart-emoji:focus {
-  outline: none;
-}
-
 /* when we click on image */
 div.rfu-dropzone:focus {
   outline: none;
@@ -1496,17 +1545,6 @@ div.rfu-dropzone:focus {
 
 .rfu-image-previewer__image {
   margin-bottom: 0;
-}
-
-/* Style for emoji search autocomplete container */
-div.rta__autocomplete.str-chat__emojisearch {
-  z-index: 10;
-  position: relative;
-  width: 100%;
-  background: #fff;
-  margin: 0;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
 }
 
 .rta__entity--selected {
@@ -1705,16 +1743,6 @@ div.rta__autocomplete.str-chat__emojisearch {
   cursor: pointer;
 }
 
-.thread-message-input__wrapper .str-chat__input--emojipicker {
-  z-index: 3;
-  top: 183px;
-  right: 299px;
-  width: 338px;
-}
-/* Style to remove outline when emoji is focused again*/
-.emoji-mart .emoji-mart-emoji:focus {
-  outline: none;
-}
 
 .team-channel-header_menu-icon {
   display: none;

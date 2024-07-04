@@ -1,11 +1,12 @@
 //alternate method is Combining ChannelListContent and ChannelListContainer into a single component
 
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { ChannelList, useChatContext } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
 import HospitalIcon from '../assets/hospital.png'
 import LogoutIcon from '../assets/logout.png'
+import ReactGA from 'react-ga4';
 
 const cookies = new Cookies();
 
@@ -46,6 +47,11 @@ const ChannelListContent = ({ isCreating, setCreateType, setIsCreating, setIsEdi
 
     //making button work
     const logout = () => {
+        ReactGA.event({
+            category: 'User',
+            action: 'Logout'
+        });
+
         cookies.remove('token')
         cookies.remove('userId');
         cookies.remove('username');
@@ -122,6 +128,14 @@ const ChannelListContent = ({ isCreating, setCreateType, setIsCreating, setIsEdi
 //it displays ChannelListContent in both way default and responsive view.
 const ChannelListContainer = ({ setIsCreating, setIsEditing, setCreateType }) => {
     const [toggleContainer, setToggleContainer] = useState(false);
+
+    useEffect(() => {
+        ReactGA.event({ // to track when the container is viewed (desktop or mobile).
+            category: 'ChannelListContainer',
+            action: 'View',
+            label: toggleContainer ? 'Mobile' : 'Desktop'
+        });
+    }, [toggleContainer]);
 
     return (
         <>
