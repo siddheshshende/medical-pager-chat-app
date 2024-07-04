@@ -28,7 +28,7 @@ const token = serverClient.createUserToken(userId);
 res.status(200).json({token, fullName, username, userId , hashedPassword, phoneNumber});
     } catch (error) {
         console.error('Signup error:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Internal server error during signup' });
     }
 };
 
@@ -57,7 +57,7 @@ const login = async (req, res)=> {
 
     } catch (error) {
         console.error('Login error:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Internal server error during login' });
     }
 };
  
