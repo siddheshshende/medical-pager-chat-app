@@ -1,7 +1,7 @@
 
 
 <div align="center">
-<img width="250px" src="client/public/favicon_io/android-chrome-192x192.png" alt="Medical Pager Chat App Logo">
+<img width="200px" src="client/public/favicon_io/android-chrome-192x192.png" alt="Medical Pager Chat App Logo">
 </div>
 
 <h1 align="center"> Medical Pager <br/> <span style="font-size:10px;">A Secure Chat App for Busy Hospitals</span></h1>
@@ -60,15 +60,16 @@
   - [Usage Notes](#usage-notes)
   - [Contributing](#contributing)
   - [License](#license)
+  - [Acknowledgements](#acknowledgements)
   
   </details> 
 
-## Overview 🔨
+## Overview🔨
 Think of a chat applications created mainly for hospitals and healthcare professionals that is just as reliable as a pager but has the features of a modern chat platform. That's MedicalPager!!. It allows doctors and medical personnel to remain connected and up to date with their hospital divisions, which results in seamless communication and better patient care.
 
 ## Problem and Solution
 
-## The Problem🆘:
+## The Problem🆘
 
 In the fast-moving, high-stakes world of hospitals, efficient communication is essential. However, traditional means of communication have certain limitations:
 
@@ -78,7 +79,7 @@ In the fast-moving, high-stakes world of hospitals, efficient communication is e
 
 Healthcare personnel want a platform that combines the dependability of pagers with the capability of current communication apps, all while responding to the specific needs of the medical field.
 
-## Our Solution:
+## Our Solution
 
 The Medical Pager Chat App responds to these issues by:
 
@@ -108,13 +109,13 @@ Our Medical Pager Chat App combines the features of traditional pagers and curr
 ## Advanced Concepts Implemented🧠
 
 - Efficient folder and file structure
-- Custom hooks for reusable logic
 - React Context API for state management
 - Integration with Stream API for scalable chat infrastructure
+- Custom hooks for reusable logic and many more...
 
-## Dependencies used 🖥️
+## Dependencies used🖥️
 
-- [x] React
+- [x] React(you know,why it is used😄)
 - [x] Stream Chat React (for chat functionality)
 - [x] Universal Cookie (for cookie management)
 - [x] Axios (for API calls)
@@ -132,13 +133,70 @@ Our Medical Pager Chat App combines the features of traditional pagers and curr
 - [x] Twilio API (for SMS services)
 - [x] Google Analytics (for user interaction tracking)
 
-## Contributing
+## Usage Notes
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for more details.
+1. If you encounter any errors during sign-in or sign-up, please refresh the page and try again.
+2. When setting up your profile, you need to provide a URL for your avatar (profile picture).
+3. To use GIFs in your messages, type `/giphy [keyword]` (e.g., `/giphy hello` to find a "hello" GIF).
+
+## Installation
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/medical-pager.git
+    cd medical-pager
+    ```
+
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3. **Set up environment variables**:
+    Create a `.env` file in the root directory and add the following variables:
+    ```
+    STREAM_APP_ID=your_stream_app_id
+    STREAM_API_SECRET=your_stream_api_secret
+    STREAM_API_KEY=your_stream_api_key
+    TWILIO_ACCOUNT_SID=your_twilio_account_sid
+    TWILIO_AUTH_TOKEN=your_twilio_auth_token
+    TWILIO_MESSAGING_SERVICE_SID=your_twilio_messaging_service_sid
+    ```
+    Replace `your_*` with your actual API keys and tokens.
+
+4. **Start the development server**:
+    ```bash
+    npm start
+    ```
+
+5. **Backend server setup**:
+    Navigate to the backend directory and follow the instructions in its README to set up the Node.js server.
+
+## Contributing🤝
+
+We welcome contributions to improve MedicalPager! Here's how you can contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix:
+    ```bash
+    git checkout -b feature/AmazingFeature
+    ```
+3. Commit your changes and push to the branch:
+    ```bash
+    git commit -m 'Add some AmazingFeature'
+    git push origin feature/AmazingFeature
+    ```
+4. Open a Pull Request with a detailed description of your changes.
+
+Please refer to our [Contributing Guidelines](CONTRIBUTING.md) for more detailed information on our development process, coding standards and pull request procedure.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+Quite a lot of the code in this repo came from [GetStream](https://getstream.io/).
 
 ---
 
