@@ -31,6 +31,12 @@ const Auth = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+    // Check if password and confirm password match
+    if (isSignup && form.password !== form.confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
         //now taking data out of the form and making url request using axios. And then extracts important pieces of data from the server's response.
         const { fullName, username, password, avatarURL, phoneNumber } = form;
         /* const URL = "http://localhost:5000/auth";*/
