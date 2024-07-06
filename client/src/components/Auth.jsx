@@ -8,7 +8,7 @@ import chatimg2 from '../assets/chatimg2.png';
 import HospitalIcon from '../assets/hospital.png'
 import ReactGA from 'react-ga4';
 
-const cookies = new Cookies(); 
+const cookies = new Cookies();
 
 const initialState = {
     fullName: '',
@@ -27,62 +27,62 @@ const Auth = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-   
-const handleSubmit = async (e) => {
-    e.preventDefault();
 
-           //now taking data out of the form and making url request using axios. And then extracts important pieces of data from the server's response.
-           const { fullName, username, password, avatarURL, phoneNumber } = form;
-          /* const URL = "http://localhost:5000/auth";*/
-           const URL = "https://medical-pager-chat-app.onrender.com/auth";
-           const startTime = Date.now(); //for GA Added timing measurement for the authentication process.
-    try {
-  
-    
-        const { data: { token, userId, hashedPassword} } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
-            username, 
-            fullName, 
-            phoneNumber, 
-            avatarURL, 
-            password
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        //now taking data out of the form and making url request using axios. And then extracts important pieces of data from the server's response.
+        const { fullName, username, password, avatarURL, phoneNumber } = form;
+        /* const URL = "http://localhost:5000/auth";*/
+        const URL = "https://medical-pager-chat-app.onrender.com/auth";
+        const startTime = Date.now(); //for GA Added timing measurement for the authentication process.
+        try {
+
+
+            const { data: { token, userId, hashedPassword } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+                username,
+                fullName,
+                phoneNumber,
+                avatarURL,
+                password
+            }
+            );
+
+            cookies.set('token', token);
+            cookies.set('fullName', fullName);
+            cookies.set('username', username);
+            cookies.set('userId', userId);
+
+            if (isSignup) {
+                cookies.set('phoneNumber', phoneNumber);
+                cookies.set('avatarURL', avatarURL);
+                cookies.set('hashedPassword', hashedPassword);
+            }
+            const endTime = Date.now();
+            ReactGA.event({ //Added event tracking for successful sign-up/sign-in.
+                category: 'User',
+                action: isSignup ? 'Sign Up' : 'Sign In',
+                label: 'Success'
+            });
+
+            ReactGA.timing({ // How long the authentication process takes
+                category: 'Authentication',
+                variable: isSignup ? 'Sign Up Time' : 'Sign In Time',
+                value: endTime - startTime
+            });
+
+            //then after setting cookies we will reload our browser.
+            window.location.reload();
+        } catch (error) {
+            if (error.response) {
+                console.error('Error response:', error.response.data);
+                alert(error.response.data.message || 'An error occurred during login.');
+            } else {
+                console.error('Error:', error.message);
+                alert('An error occurred. Please try again.');
+            }
         }
-    );
-
-        cookies.set('token', token);
-        cookies.set('fullName', fullName);
-        cookies.set('username', username);
-        cookies.set('userId', userId);
-
-        if (isSignup) {
-            cookies.set('phoneNumber', phoneNumber);
-            cookies.set('avatarURL', avatarURL);
-            cookies.set('hashedPassword', hashedPassword);
-        }
-        const endTime = Date.now();
-        ReactGA.event({ //Added event tracking for successful sign-up/sign-in.
-            category: 'User',
-            action: isSignup ? 'Sign Up' : 'Sign In',
-            label: 'Success'
-        });
-
-        ReactGA.timing({ // How long the authentication process takes
-            category: 'Authentication',
-            variable: isSignup ? 'Sign Up Time' : 'Sign In Time',
-            value: endTime - startTime
-        });
-
- //then after setting cookies we will reload our browser.
-        window.location.reload();
-    } catch (error) {
-        if (error.response) {
-            console.error('Error response:', error.response.data);
-            alert(error.response.data.message || 'An error occurred during login.');
-        } else {
-            console.error('Error:', error.message);
-            alert('An error occurred. Please try again.');
-        }
-    }
-};
+    };
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);// changing the state depending on previous state.
@@ -97,8 +97,8 @@ const handleSubmit = async (e) => {
     return (
         <div className='auth__form-container'>
             <div className='auth__form-container_fields'>
-            <div className='logo-auth'>
-                    <img src={HospitalIcon } alt="Hospital" width="30" style={{ marginRight: '10px' }} />
+                <div className='logo-auth'>
+                    <img src={HospitalIcon} alt="Hospital" width="30" style={{ marginRight: '10px' }} />
                     <p>Medical Pager</p>
                 </div>
 
@@ -159,6 +159,8 @@ const handleSubmit = async (e) => {
                                 name='password'
                                 placeholder='Enter Password'
                                 onChange={handleChange}
+                                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                                title="Password must be at least 8 characters long and should include both letters and numbers only"
                                 required
                             />
                         </div>
@@ -170,6 +172,8 @@ const handleSubmit = async (e) => {
                                     name='confirmPassword'
                                     placeholder='Enter Password again'
                                     onChange={handleChange}
+                                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" 
+                                    title="Password must be at least 8 characters long and should include both letters and numbers only"
                                     required
                                 />
                             </div>
