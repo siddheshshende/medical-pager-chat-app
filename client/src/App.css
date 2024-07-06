@@ -1,3 +1,5 @@
+/*used BEM convention for css (generally, used for large projects)*/
+
 :root {
   --primary-color: #005fff;
   --primary-color-alpha: #005fff1a;

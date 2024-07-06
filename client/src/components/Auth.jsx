@@ -134,7 +134,7 @@ const handleSubmit = async (e) => {
                                 <input
                                     type='tel'
                                     name='phoneNumber'
-                                    placeholder='Enter Phone Number'
+                                    placeholder='Enter Phone Number with country code at start'
                                     onChange={handleChange}
                                     required
                                 />

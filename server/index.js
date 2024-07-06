@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
     res.send("hello winner");
 });
 
-// setting up Route for handling new messages
+// setting up Route (webhook endpoint) for handling new messages
 app.post('/', (req, res) => {
     const { user: sender, message, type, members } = req.body;
 
@@ -37,7 +37,7 @@ app.post('/', (req, res) => {
                 if (!user.online) {
                     twilioClient.messages.create({
                         body: `You have a new message from ${message.user.fullName} - ${message.text}`,
-                        messagingServiceSid: messagingServiceSid,
+                        messagingServiceSid: messagingServiceSid, //from parameter i.e twilio number.
                         to: user.phoneNumber
                     })
                     .then(() => console.log('Message sent!'))
@@ -46,7 +46,7 @@ app.post('/', (req, res) => {
             });
         return res.status(200).send("Message sent successfully!");
     }
-return res.status(200).send("Not a new message");//if error i think
+return res.status(200).send("Not a new message");//if error
 });
 
 app.use('/auth', authRoutes);
