@@ -1,4 +1,5 @@
 
+<a name="readme-top"></a>
 
 <div align="center">
 <img width="200px" src="client/public/favicon_io/android-chrome-192x192.png" alt="Medical Pager Chat App Logo">
@@ -58,6 +59,7 @@
   - [Dependencies Used](#dependencies-used)
   - [API & Services](#api--services)
   - [Usage Notes](#usage-notes)
+  - [Installation](#installation)
   - [Contributing](#contributing)
   - [License](#license)
   - [Acknowledgements](#acknowledgements)
@@ -138,13 +140,40 @@ Our Medical Pager Chat App combines the features of traditional pagers and curr
 1. If you encounter any errors during sign-in or sign-up, please refresh the page and try again.
 2. When setting up your profile, you need to provide a URL for your avatar (profile picture).
 3. To use GIFs in your messages, type `/giphy [keyword]` (e.g., `/giphy hello` to find a "hello" GIF).
+4. The project code includes various comments which clarify functionality and increase readability. These comments can be useful for understanding the code's structure and logic.
 
+<div align="center">
+<img width="200px" src="client/src/assests/c1.jpg" alt="Medical Pager dashboard">
+</div>
+
+   <p align="right">(<a href="#readme-top">back to top</a>)</p>
+   
 ## Installation
+
+### Frontend setup:
 
 1. **Clone the repository**:
     ```bash
     git clone https://github.com/yourusername/medical-pager.git
-    cd medical-pager
+    cd medical-pager/client
+    ```
+
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
+    
+3. **Start the development server**:
+    ```bash
+    npm start
+    ```
+can also refer client's README.md file for more details.
+ 
+   ### Backend setup: 
+
+1. **Navigate to the server directory**:
+    ```bash
+    cd ../server
     ```
 
 2. **Install dependencies**:
@@ -153,24 +182,25 @@ Our Medical Pager Chat App combines the features of traditional pagers and curr
     ```
 
 3. **Set up environment variables**:
-    Create a `.env` file in the root directory and add the following variables:
-    ```
-    STREAM_APP_ID=your_stream_app_id
+   Open the `client/src/App.js` and `client/src/Components/Auth.js` files and replace the placeholders with your actual API keys and tokens:
+    Create a `.env` file in the root directory of the `server` folder and add the following variables:
+    ```plaintext
+     STREAM_APP_ID=your_stream_app_id
     STREAM_API_SECRET=your_stream_api_secret
     STREAM_API_KEY=your_stream_api_key
     TWILIO_ACCOUNT_SID=your_twilio_account_sid
     TWILIO_AUTH_TOKEN=your_twilio_auth_token
     TWILIO_MESSAGING_SERVICE_SID=your_twilio_messaging_service_sid
     ```
-    Replace `your_*` with your actual API keys and tokens.
+   Replace `your_*` with your actual API keys and tokens.
 
-4. **Start the development server**:
+4. **Start the backend server**:
     ```bash
     npm start
+    npm run dev
     ```
-
-5. **Backend server setup**:
-    Navigate to the backend directory and follow the instructions in its README to set up the Node.js server.
+   
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing🤝
 
@@ -187,8 +217,9 @@ We welcome contributions to improve MedicalPager! Here's how you can contribute:
     git push origin feature/AmazingFeature
     ```
 4. Open a Pull Request with a detailed description of your changes.
+5. Voila ❗ You have made a PR to this awesome projects💥. Wait for your submission to be accepted and your PR to be merged.
 
-Please refer to our [Contributing Guidelines](CONTRIBUTING.md) for more detailed information on our development process, coding standards and pull request procedure.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
 
@@ -198,6 +229,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Quite a lot of the code in this repo came from [GetStream](https://getstream.io/).
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 ---
 
 <div align="center">
