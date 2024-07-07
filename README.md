@@ -59,6 +59,7 @@
   - [Dependencies Used](#dependencies-used)
   - [API & Services](#api--services)
   - [Usage Notes](#usage-notes)
+  - [Security and User Management](#Security-and-User-Management)
   - [Installation](#installation)
   - [Contributing](#contributing)
   - [License](#license)
@@ -87,26 +88,35 @@ The Medical Pager Chat App responds to these issues by:
 
 1. **Reliable Infrastructure:** Using robust messaging systems to ensure communication even in locations with low cell coverage.
 2. **Advanced Functionality:** Provides two-way communication with features such as direct and group conversations, multimedia sharing, and threaded replies.
-3. **Emergency-Ready:** Prioritise sending messages in critically important situations,  same as traditional pager systems does.
+3. **Emergency-Ready:** Prioritise sending messages in critically important situations to verified personnels, same as traditional pager systems does.
 4. **Unified Platform:** Offers a single, standardised communication tool that can be utilised among various hospital departments.
-5. **Always Connected:** Using SMS notifications to notify users of vital messages when offline.
+5. **Always Connected:** Using SMS notifications to notify verified users of vital messages when offline.
 6. **User Friendly Design:** Featuring a straightforward UI that is simple to understand and apply, even in high-pressure situations.
 
 Our Medical Pager Chat App combines the features of traditional pagers and current chat applications to deliver a complete, dependable, and effective communication solution for healthcare professionals, eventually improving patient care and the operation of hospitals.
 
+<div align="center">
+<img src="c1.JPG" alt="Medical Pager dashboard">
+</div>
+
+!["Chat interface"](gif1.gif) 
+!["Chat interface with mentions"](gif2.gif)
+
 ## Key Features:
 
-- Authentication with secure user management
-- Direct and group chat functionality
+- Authentication with secure user management.
+- Direct and group chat functionality.
 - Multimedia support (GIFs, photos, YouTube embeds)
-- YouTube video playback within the chat
-- Message editing and deletion
-- Threaded replies for structured conversations
-- Giphy integration via the `/giphy' command
-- search functionality for channels and users
-- Fully responsive design for all devices
-- Twilio for real-time SMS notifications
-- Webhooks for event-driven notifications and integrations
+- YouTube video playback within the chat.
+- Message editing and deletion.
+- Threaded replies for structured conversations.
+- Giphy integration via the `/giphy' command.
+- search functionality for channels and users.
+- Fully responsive design for all devices.
+- Twilio for real-time SMS notifications.
+- Upload local files directly into the chat.
+- Mentions (hey @you) to mention specific users.
+- Webhooks for event-driven notifications and integrations.
 
 ## Advanced Concepts Implemented🧠
 
@@ -114,6 +124,8 @@ Our Medical Pager Chat App combines the features of traditional pagers and curr
 - React Context API for state management
 - Integration with Stream API for scalable chat infrastructure
 - Custom hooks for reusable logic and many more...
+
+ <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Dependencies used🖥️
 
@@ -140,13 +152,39 @@ Our Medical Pager Chat App combines the features of traditional pagers and curr
 1. If you encounter any errors during sign-in or sign-up, please refresh the page and try again.
 2. When setting up your profile, you need to provide a URL for your avatar (profile picture).
 3. To use GIFs in your messages, type `/giphy [keyword]` (e.g., `/giphy hello` to find a "hello" GIF).
-4. The project code includes various comments which clarify functionality and increase readability. These comments can be useful for understanding the code's structure and logic.
-
-<div align="center">
-<img width="200px" src="client/src/assests/c1.jpg" alt="Medical Pager dashboard">
-</div>
+4. To mention a specific user in a chat, type `@username`.
+5. The project code includes various comments which clarify functionality and increase readability. These comments can be useful for understanding the code's structure and logic.
 
    <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+   ## Security and User Management
+
+We've implemented strict rules for managing members/users across all types of chats in Medical Pager to ensure security and proper access control:
+
+* **Automatic Memberships:**
+   * Users cannot leave or be removed from chats they were automatically added to. For example:
+     - Doctors cannot leave or be removed from their hospital's general chat
+     - Department heads cannot leave or be removed from their department's chat
+
+* **Private Conversations:**
+   * Members cannot leave or be removed from their private conversations (DMs)
+
+* **Administrative Control:**
+   * Hospital administrators have the highest level of control and can manage most user access, with some exceptions
+
+* **Department-Specific:**
+   * Department members cannot leave or be removed from their department's dedicated chat
+
+* **Patient-Related Chats:**
+   * The primary physician cannot leave or be removed from their patient's case discussion
+   * Assigned nurses cannot leave or be removed from their patients' care coordination chats
+
+* **Administrative Powers:**
+   * Hospital administrators can remove any regular user from any chat, except where noted above
+
+These rules are designed to maintain the integrity of communication channels, ensure that critical information reaches the right people and prevent accidental or unauthorized removal of essential personnel from important conversations.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
    
 ## Installation
 
@@ -230,7 +268,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Quite a lot of the code in this repo came from [GetStream](https://getstream.io/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
----
+<hr>
 
 <div align="center">
 Made with ❤️ for healthcare professionals
