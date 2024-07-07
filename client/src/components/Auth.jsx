@@ -85,7 +85,7 @@ const Auth = () => {
                 alert(error.response.data.message || 'An error occurred during login.');
             } else {
                 console.error('Error:', error.message);
-                alert('An error occurred. Please try again.');
+                alert('Please Refresh the page.');
             }
         }
     };
@@ -142,6 +142,7 @@ const Auth = () => {
                                     name='phoneNumber'
                                     placeholder='Enter Phone Number with country code at start'
                                     onChange={handleChange}
+                                     title="For example: +91996056****"
                                     required
                                 />
                             </div>
@@ -154,6 +155,7 @@ const Auth = () => {
                                     name='avatarURL'
                                     placeholder='Enter Avatar URL'
                                     onChange={handleChange}
+                                     title="your Profile-Picture"
                                     required
                                 />
                             </div>
