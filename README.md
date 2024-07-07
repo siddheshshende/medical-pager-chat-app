@@ -157,7 +157,7 @@ Our Medical Pager Chat App combines the features of traditional pagers and curr
 
    <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-   ## Security and User Management
+## Security and User Management
 
 We've implemented strict rules for managing members/users across all types of chats in Medical Pager to ensure security and proper access control:
 
