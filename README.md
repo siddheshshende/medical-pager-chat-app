@@ -154,6 +154,7 @@ Our Medical Pager Chat App combines the features of traditional pagers and curr
 3. To use GIFs in your messages, type `/giphy [keyword]` (e.g., `/giphy hello` to find a "hello" GIF).
 4. To mention a specific user in a chat, type `@username`.
 5. The project code includes various comments which clarify functionality and increase readability. These comments can be useful for understanding the code's structure and logic.
+6. For more information, access the full project demo video on Google Drive [here](https://drive.google.com/drive/folders/1t4ZaA0Z9sn59LwjCKvfuHerGs8eDd8oa?usp=drive_link).
 
    <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
