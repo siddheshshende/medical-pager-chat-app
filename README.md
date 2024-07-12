@@ -10,7 +10,6 @@
 
 <div align="center">
 
-![Badge](https://img.shields.io/badge/Tech_Stack-MERN-blue)
 ![Badge](https://img.shields.io/badge/API-Stream-green)
 ![Badge](https://img.shields.io/badge/Analytics-Google_Analytics-orange)
 ![Badge](https://img.shields.io/badge/CSS-BEM-lightgrey)
